@@ -1,6 +1,6 @@
 import os
 import pygame
-from main import main_menu
+from main import mainmenu
 
 def charactercreator():
     pygame.init()
