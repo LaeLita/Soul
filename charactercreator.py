@@ -1,52 +1,36 @@
-import os
 import pygame
-from main import main_menu
+import os
 
-def character_creator():
-    # Initialize Pygame
+def charactercreator():
     pygame.init()
 
-    # Set up the Pygame window
     screen_width = 800
     screen_height = 600
     screen = pygame.display.set_mode((screen_width, screen_height))
     pygame.display.set_caption("Character Creator")
 
-    # Load the background image
-    image_filename = "characterbackground.png"
-    image_path = os.path.join("gameimages", image_filename)
-    background_image = pygame.image.load(image_path)
+    background_color = (255, 255, 255)
 
-    # Create "Back" button
-    back_button_rect = pygame.Rect(650, 50, 100, 50)
-
-    # Character creator loop
     running = True
     while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-            elif event.type == pygame.MOUSEBUTTONDOWN:
+
+            if event.type == pygame.MOUSEBUTTONDOWN:
                 mouse_pos = pygame.mouse.get_pos()
-                if back_button_rect.collidepoint(mouse_pos):
+                if 650 <= mouse_pos[0] <= 780 and 10 <= mouse_pos[1] <= 40:
                     running = False
-                    main_menu()
 
-        # Draw the background image on the screen
-        screen.blit(background_image, (0, 0))
-
-        # Draw the "Back" button
-        pygame.draw.rect(screen, (255, 0, 0), back_button_rect)
-        font = pygame.font.Font(None, 36)
-        text = font.render("Back", True, (255, 255, 255))
-        screen.blit(text, (660, 60))
+        screen.fill(background_color)
+        pygame.draw.rect(screen, (0, 0, 0), (650, 10, 130, 30))
+        font = pygame.font.Font(None, 24)
+        back_text = font.render("Back", True, (255, 255, 255))
+        screen.blit(back_text, (670, 15))
 
         pygame.display.flip()
 
-    # Clean up and exit the character creator
     pygame.quit()
-    exit()
 
-# Entry point of the program
 if __name__ == "__main__":
-    character_creator()
+    charactercreator()
