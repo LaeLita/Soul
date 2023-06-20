@@ -1,25 +1,20 @@
-import pygame
 import os
-from PIL import Image
-
-# Initialize Pygame
-pygame.init()
-
-# Set up the screen
-screen_width = 800
-screen_height = 600
-screen = pygame.display.set_mode((screen_width, screen_height))
-pygame.display.set_caption("Horse Game")
+import pygame
 
 def main_menu():
-    # Load and display the background image
+    # Initialize Pygame
+    pygame.init()
+
+    # Set up the Pygame window
+    screen_width = 800
+    screen_height = 600
+    screen = pygame.display.set_mode((screen_width, screen_height))
+    pygame.display.set_caption("Horse Game")
+
+    # Load the background image
     image_filename = "mainbackground.png"
     image_path = os.path.join("gameimages", image_filename)
-    background_image = pygame.image.load(image_path).convert()
-    screen.blit(background_image, (0, 0))
-
-    # Create a button for the new game
-    new_game_button = pygame.Rect(100, 200, 200, 50)
+    background_image = pygame.image.load(image_path)
 
     # Main menu loop
     running = True
@@ -27,28 +22,18 @@ def main_menu():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-            elif event.type == pygame.MOUSEBUTTONDOWN:
-                if event.button == 1:  # Left mouse button
-                    mouse_pos = pygame.mouse.get_pos()
-                    if new_game_button.collidepoint(mouse_pos):
-                        cutscene()
-                        character_creator()
 
-        # Draw the buttons
-        pygame.draw.rect(screen, (255, 0, 0), new_game_button)
+        # Draw the background image on the screen
+        screen.blit(background_image, (0, 0))
 
-        # Update the screen
+        # Draw the menu options
+        # ... (code for drawing menu options goes here)
+
         pygame.display.flip()
 
-def cutscene():
-    # Add your code for the cutscene here
-    print("Cutscene...")
-    # Rest of the code for the cutscene
-
-def character_creator():
-    # Add your code for the character creator here
-    print("Character creator...")
-    # Rest of the code for the character creator
+    # Clean up and exit the game
+    pygame.quit()
+    exit()
 
 # Entry point of the program
 if __name__ == "__main__":
