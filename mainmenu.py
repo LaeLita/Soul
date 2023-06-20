@@ -22,20 +22,15 @@ def main_menu():
 
             if event.type == pygame.MOUSEBUTTONDOWN:
                 mouse_pos = pygame.mouse.get_pos()
-                if 650 <= mouse_pos[0] <= 780 and 10 <= mouse_pos[1] <= 40:
-                    running = False
-                elif 100 <= mouse_pos[0] <= 300 and 200 <= mouse_pos[1] <= 230:
+                if 100 <= mouse_pos[0] <= 300 and 200 <= mouse_pos[1] <= 230:
                     charactercreator()
 
         screen.blit(background_image, (0, 0))
-        pygame.draw.rect(screen, (0, 0, 0), (650, 10, 130, 30))
         pygame.draw.rect(screen, (0, 0, 0), (100, 200, 200, 30))
 
         font = pygame.font.Font(None, 24)
         new_game_text = font.render("New Game", True, (255, 255, 255))
-        back_text = font.render("Back", True, (255, 255, 255))
         screen.blit(new_game_text, (120, 205))
-        screen.blit(back_text, (670, 15))
 
         pygame.display.flip()
 
