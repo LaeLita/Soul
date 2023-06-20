@@ -4,7 +4,7 @@ from PIL import Image
 def main_menu():
     # Load and display the background image
     image_filename = "mainbackground.png"
-    image_path = os.path.join("images", image_filename)
+    image_path = os.path.join("gameimages", image_filename)
     background_image = Image.open(image_path)
     background_image.show()
 
