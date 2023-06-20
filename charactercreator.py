@@ -48,4 +48,4 @@ def is_back_clicked(mouse_pos):
 
 # Entry point of the character creator
 if __name__ == "__main__":
-    character_creator()
+    charactercreator()
