@@ -2,7 +2,7 @@ import os
 import pygame
 from charactercreator import charactercreator
 
-def main_menu():
+def mainmenu():
     pygame.init()
 
     screen_width = 800
