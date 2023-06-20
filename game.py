@@ -1,16 +1,28 @@
-import mainmenu
 import pygame
+import mainmenu
+import charactercreator
 
 def mainmenu():
-    # Your code for the main menu goes here
-    # ...
+    pygame.init()
 
-    pygame.event.wait()  # Wait for any key press
+    screen_width = 800
+    screen_height = 600
+    screen = pygame.display.set_mode((screen_width, screen_height))
+    pygame.display.set_caption("Horse Game")
+
+    running = True
+    while running:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+
+            if event.type == pygame.KEYDOWN:
+                mainmenu.mainmenu()
+
+        pygame.display.flip()
 
     pygame.quit()
-    mainmenu.main_menu()  # Call the main_menu() function from mainmenu.py
+    exit()
 
 if __name__ == "__main__":
     mainmenu()
-
-
