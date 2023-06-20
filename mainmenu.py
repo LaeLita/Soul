@@ -17,23 +17,37 @@ def main_menu():
     image_path = os.path.join("gameimages", image_filename)
     background_image = pygame.image.load(image_path)
 
+    # Create menu option buttons
+    new_game_button_rect = pygame.Rect(100, 200, 200, 50)
+    load_game_button_rect = pygame.Rect(100, 300, 200, 50)
+    settings_button_rect = pygame.Rect(100, 400, 200, 50)
+    exit_game_button_rect = pygame.Rect(100, 500, 200, 50)
+
     # Main menu loop
-    show_menu = True
-    while show_menu:
+    running = True
+    while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                show_menu = False
+                running = False
             elif event.type == pygame.MOUSEBUTTONDOWN:
-                if event.button == 1:  # Left mouse button
-                    if is_new_game_clicked(event.pos):
-                        show_menu = False
-                        charactercreator()  # Open the character creator
+                mouse_pos = pygame.mouse.get_pos()
+                if new_game_button_rect.collidepoint(mouse_pos):
+                    charactercreator()
+                elif load_game_button_rect.collidepoint(mouse_pos):
+                    load_game()
+                elif settings_button_rect.collidepoint(mouse_pos):
+                    settings()
+                elif exit_game_button_rect.collidepoint(mouse_pos):
+                    exit_game()
 
         # Draw the background image on the screen
         screen.blit(background_image, (0, 0))
 
         # Draw the menu options
-        # ... (code for drawing menu options goes here)
+        pygame.draw.rect(screen, (255, 0, 0), new_game_button_rect)
+        pygame.draw.rect(screen, (0, 255, 0), load_game_button_rect)
+        pygame.draw.rect(screen, (0, 0, 255), settings_button_rect)
+        pygame.draw.rect(screen, (255, 255, 0), exit_game_button_rect)
 
         pygame.display.flip()
 
@@ -41,10 +55,26 @@ def main_menu():
     pygame.quit()
     exit()
 
-def is_new_game_clicked(mouse_pos):
-    # Add your logic here to determine if the "New Game" button is clicked
-    # based on the mouse position
-    return True  # Replace with your actual logic
+def new_game():
+    # Add your code for starting a new game here
+    print("Starting a new game...")
+    # Rest of the code for the new game
+
+def load_game():
+    # Add your code for loading a game here
+    print("Loading a game...")
+    # Rest of the code for loading the game
+
+def settings():
+    # Add your code for the settings menu here
+    print("Settings menu...")
+    # Rest of the code for the settings menu
+
+def exit_game():
+    print("Exiting the game...")
+    # Add any necessary cleanup code here
+    # Exiting the program
+    exit()
 
 # Entry point of the program
 if __name__ == "__main__":
