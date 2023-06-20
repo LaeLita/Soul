@@ -22,18 +22,27 @@ def main_menu():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
+            elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                mouse_pos = pygame.mouse.get_pos()
+                if new_game_button_rect.collidepoint(mouse_pos):
+                    character_creator()
 
         # Draw the background image on the screen
         screen.blit(background_image, (0, 0))
 
         # Draw the menu options
-        # ... (code for drawing menu options goes here)
+        new_game_button_rect = pygame.Rect(100, 200, 200, 50)
+        pygame.draw.rect(screen, (0, 255, 0), new_game_button_rect)
 
         pygame.display.flip()
 
     # Clean up and exit the game
     pygame.quit()
     exit()
+
+def character_creator():
+    # Add your code for the character creator here
+    print("Character Creator")
 
 # Entry point of the program
 if __name__ == "__main__":
