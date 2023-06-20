@@ -1,5 +1,6 @@
-import pygame
 import os
+import pygame
+from main import main_menu
 
 def charactercreator():
     pygame.init()
@@ -9,7 +10,9 @@ def charactercreator():
     screen = pygame.display.set_mode((screen_width, screen_height))
     pygame.display.set_caption("Character Creator")
 
-    background_color = (255, 255, 255)
+    image_filename = "characterbackground.png"
+    image_path = os.path.join("gameimages", image_filename)
+    background_image = pygame.image.load(image_path)
 
     running = True
     while running:
@@ -19,14 +22,16 @@ def charactercreator():
 
             if event.type == pygame.MOUSEBUTTONDOWN:
                 mouse_pos = pygame.mouse.get_pos()
-                if 650 <= mouse_pos[0] <= 780 and 10 <= mouse_pos[1] <= 40:
+                if 600 <= mouse_pos[0] <= 650 and 10 <= mouse_pos[1] <= 30:
                     running = False
+                    main_menu()
 
-        screen.fill(background_color)
-        pygame.draw.rect(screen, (0, 0, 0), (650, 10, 130, 30))
-        font = pygame.font.Font(None, 24)
+        screen.blit(background_image, (0, 0))
+        pygame.draw.rect(screen, (0, 0, 0), (600, 10, 50, 20))
+
+        font = pygame.font.Font(None, 18)
         back_text = font.render("Back", True, (255, 255, 255))
-        screen.blit(back_text, (670, 15))
+        screen.blit(back_text, (605, 12))
 
         pygame.display.flip()
 
