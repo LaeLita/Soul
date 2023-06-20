@@ -2,7 +2,7 @@ import os
 import pygame
 from main_menu import main_menu
 
-def character_creator():
+def charactercreator():
     # Initialize Pygame
     pygame.init()
 
