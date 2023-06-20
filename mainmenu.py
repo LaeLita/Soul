@@ -1,5 +1,6 @@
 import os
 import pygame
+from character_creator import character_creator
 
 def main_menu():
     # Initialize Pygame
@@ -17,22 +18,22 @@ def main_menu():
     background_image = pygame.image.load(image_path)
 
     # Main menu loop
-    running = True
-    while running:
+    show_menu = True
+    while show_menu:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                running = False
-            elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
-                mouse_pos = pygame.mouse.get_pos()
-                if new_game_button_rect.collidepoint(mouse_pos):
-                    character_creator()
+                show_menu = False
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                if event.button == 1:  # Left mouse button
+                    if is_new_game_clicked(event.pos):
+                        show_menu = False
+                        character_creator()  # Open the character creator
 
         # Draw the background image on the screen
         screen.blit(background_image, (0, 0))
 
         # Draw the menu options
-        new_game_button_rect = pygame.Rect(100, 200, 200, 50)
-        pygame.draw.rect(screen, (0, 255, 0), new_game_button_rect)
+        # ... (code for drawing menu options goes here)
 
         pygame.display.flip()
 
@@ -40,9 +41,10 @@ def main_menu():
     pygame.quit()
     exit()
 
-def character_creator():
-    # Add your code for the character creator here
-    print("Character Creator")
+def is_new_game_clicked(mouse_pos):
+    # Add your logic here to determine if the "New Game" button is clicked
+    # based on the mouse position
+    return True  # Replace with your actual logic
 
 # Entry point of the program
 if __name__ == "__main__":
