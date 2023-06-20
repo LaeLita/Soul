@@ -27,7 +27,7 @@ def main_menu():
                 if event.button == 1:  # Left mouse button
                     if is_new_game_clicked(event.pos):
                         show_menu = False
-                        character_creator()  # Open the character creator
+                        charactercreator()  # Open the character creator
 
         # Draw the background image on the screen
         screen.blit(background_image, (0, 0))
