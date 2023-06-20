@@ -38,4 +38,4 @@ def mainmenu():
     exit()
 
 if __name__ == "__main__":
-    main_menu()
+    mainmenu()
