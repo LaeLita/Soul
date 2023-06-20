@@ -3,7 +3,7 @@ from PIL import Image
 
 def main_menu():
     # Load and display the background image
-    background_path = input("Enter the file path for the background image (PNG): ")
+    background_path = input(images)
     background_image = Image.open(background_path)
     background_image.show()
 
