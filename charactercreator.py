@@ -24,7 +24,7 @@ def charactercreator():
                 mouse_pos = pygame.mouse.get_pos()
                 if 600 <= mouse_pos[0] <= 650 and 10 <= mouse_pos[1] <= 30:
                     running = False
-                    mainmenu.main_menu()
+                    mainmenu.mainmenu()
 
         screen.blit(background_image, (0, 0))
         pygame.draw.rect(screen, (0, 0, 0), (600, 10, 50, 20))
