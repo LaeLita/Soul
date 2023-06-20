@@ -1,8 +1,8 @@
 import os
 import pygame
-from main_menu import main_menu
+from main import main_menu
 
-def charactercreator():
+def character_creator():
     # Initialize Pygame
     pygame.init()
 
@@ -12,10 +12,13 @@ def charactercreator():
     screen = pygame.display.set_mode((screen_width, screen_height))
     pygame.display.set_caption("Character Creator")
 
-    # Load the character creator background image
-    image_filename = "charactercreator.png"
+    # Load the background image
+    image_filename = "characterbackground.png"
     image_path = os.path.join("gameimages", image_filename)
     background_image = pygame.image.load(image_path)
+
+    # Create "Back" button
+    back_button_rect = pygame.Rect(650, 50, 100, 50)
 
     # Character creator loop
     running = True
@@ -24,16 +27,19 @@ def charactercreator():
             if event.type == pygame.QUIT:
                 running = False
             elif event.type == pygame.MOUSEBUTTONDOWN:
-                if event.button == 1:  # Left mouse button
-                    if is_back_clicked(event.pos):
-                        running = False
-                        main_menu()  # Return to the main menu
+                mouse_pos = pygame.mouse.get_pos()
+                if back_button_rect.collidepoint(mouse_pos):
+                    running = False
+                    main_menu()
 
         # Draw the background image on the screen
         screen.blit(background_image, (0, 0))
 
-        # Draw character creator elements
-        # ... (code for drawing character creator elements goes here)
+        # Draw the "Back" button
+        pygame.draw.rect(screen, (255, 0, 0), back_button_rect)
+        font = pygame.font.Font(None, 36)
+        text = font.render("Back", True, (255, 255, 255))
+        screen.blit(text, (660, 60))
 
         pygame.display.flip()
 
@@ -41,11 +47,6 @@ def charactercreator():
     pygame.quit()
     exit()
 
-def is_back_clicked(mouse_pos):
-    # Add your logic here to determine if the "Back" button is clicked
-    # based on the mouse position
-    return True  # Replace with your actual logic
-
-# Entry point of the character creator
+# Entry point of the program
 if __name__ == "__main__":
-    charactercreator()
+    character_creator()
